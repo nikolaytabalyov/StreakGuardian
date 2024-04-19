@@ -1,5 +1,4 @@
 // include the library code:
-#include <EEPROM.h>
 #include <LiquidCrystal.h>
 
 // initialize the library by associating any needed LCD interface pin
@@ -16,7 +15,7 @@ int buttonStateTwo = 0;
 int buttonStateThree = 0;
 
 String taskArray[] = {"Duolingo","Workout","Walk the dogs"};
-//int streakArray[] = {0,0,0};
+int streakArray[] = {0,0,0};
 int current = 0;
 
 void setup() {
@@ -39,7 +38,7 @@ void loop() {
   
   
   String currentTask = taskArray[current];
-  int currentStreak = EEPROM.read(current);
+  int currentStreak = streakArray[current];
   
   lcd.clear();
   lcd.setCursor(0, 0);
@@ -85,7 +84,7 @@ void loop() {
    
     currentTask = taskArray[current];
     
-    currentStreak = EEPROM.read(current);
+    currentStreak = streakArray[current];
   } 
   
   // Button 2
@@ -101,7 +100,7 @@ void loop() {
     
     currentTask = taskArray[current];
     
-    currentStreak = EEPROM.read(current);
+    currentStreak = streakArray[current];
   } else {
     // turn LED off
     digitalWrite(LED_BUILTIN, LOW);
@@ -112,8 +111,8 @@ void loop() {
   if (buttonStateThree == HIGH) {
     // turn LED on
     digitalWrite(LED_BUILTIN, HIGH);
-    currentStreak++;
-    EEPROM.write(current, currentStreak);
+    
+    streakArray[current]++;
     
   } else {
     // turn LED off
