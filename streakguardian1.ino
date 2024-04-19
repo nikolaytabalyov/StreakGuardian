@@ -1,6 +1,5 @@
 // include the library code:
 #include <LiquidCrystal.h>
-
 // initialize the library by associating any needed LCD interface pin
 // with the arduino pin number it is connected to
 
@@ -13,17 +12,27 @@ int i = 7;
 int buttonStateOne = 0;
 int buttonStateTwo = 0;
 int buttonStateThree = 0;
+int buttonStateFour = 0;
+int buttonStateFive = 0;
 
-String taskArray[] = {"Duolingo","Workout","Walk the dogs"};
-int streakArray[] = {0,0,0};
-int current = 0;
+int currentIndex = 0;
+
+const int maxLength = 10; // Maximum length of the arrays
+String taskArray[maxLength]; // Array to hold tasks
+int streakArray[maxLength]; // Array to hold streaks
+int currentLength = 0; // Variable to keep track of current length
 
 void setup() {
-  
-  
+  addTask("Duolingo");
+  addTask("Dogs");
+  addTask("Workout");
+
+  Serial.begin(9600);
   // set up the LCD's number of columns and rows:
   lcd.begin(16, 2);
   
+  pinMode(6, INPUT);
+  pinMode(7, INPUT);
   pinMode(8, INPUT);
   pinMode(9, INPUT);
   pinMode(10, INPUT);
@@ -32,13 +41,14 @@ void setup() {
 
 void loop() {
   
+  buttonStateFour = digitalRead(7);
+  buttonStateFive = digitalRead(6);
   buttonStateThree = digitalRead(8);
   buttonStateTwo = digitalRead(9);
   buttonStateOne = digitalRead(10);
   
-  
-  String currentTask = taskArray[current];
-  int currentStreak = streakArray[current];
+  String currentTask = taskArray[currentIndex];
+  int currentStreak = streakArray[currentIndex];
   
   lcd.clear();
   lcd.setCursor(0, 0);
@@ -68,60 +78,97 @@ void loop() {
   }
   //lcd.print("    "); 
   delay(100);
-  
+
 */  
   
-  // Button 1
-  if (buttonStateOne == HIGH) {
-    // turn LED on
-    digitalWrite(LED_BUILTIN, HIGH);
+  // Button 1 (Previous Task Button)
+  if (buttonStateOne == HIGH) { // Button = Pressed
     
-    current--;
+    currentIndex--;
     
-     if(current == -1){
-      current =  3 - 1; 
+     if(currentIndex == -1){
+      currentIndex = currentLength - 1; 
     }
    
-    currentTask = taskArray[current];
+    currentTask = taskArray[currentIndex];
     
-    currentStreak = streakArray[current];
+    currentStreak = streakArray[currentIndex];
   } 
   
-  // Button 2
-  if (buttonStateTwo == HIGH) {
-    // turn LED on
-    digitalWrite(LED_BUILTIN, HIGH);
+  
+  // Button 2 (Next Task Button)
+  if (buttonStateTwo == HIGH) { // Button = Pressed
     
-    current++;
+    currentIndex++;
     
-    if(current == 3){
-      current = 0; 
+    if(currentIndex == currentLength){
+      currentIndex= 0; 
     }
     
-    currentTask = taskArray[current];
+    currentTask = taskArray[currentIndex];
     
-    currentStreak = streakArray[current];
-  } else {
-    // turn LED off
-    digitalWrite(LED_BUILTIN, LOW);
+    currentStreak = streakArray[currentIndex];
+  } 
+  
+  
+  // Button 3 (Increase Streak Counter Button)
+  if (buttonStateThree == HIGH) { // Button = Pressed
+    streakArray[currentIndex]++;
   }
   
   
-  // Button 3
-  if (buttonStateThree == HIGH) {
-    // turn LED on
-    digitalWrite(LED_BUILTIN, HIGH);
-    
-    streakArray[current]++;
-    
-  } else {
-    // turn LED off
-    digitalWrite(LED_BUILTIN, LOW);
-  }
+  // Button 4 (Add Task Button)
+  if (buttonStateFour == HIGH) { // Button = Pressed
+    addTask("Cook");
+  } 
   
-  delay(200); // Delay a little bit to improve simulation performance
+  
+  // Button 5 (Remove Task Button)
+  if (buttonStateFive == HIGH) { // Button = Pressed
+    removeTask(0);
+  } 
+  
+  delay(120); // Delay a little bit to improve simulation performance
 
 }
 
+int getLength() {
+  return sizeof(streakArray)/sizeof(streakArray[0]);
+}
 
+void addTask(String newTask) {
+  // Check if there's space to add a new task
+  if (currentLength >= maxLength) {
+    Serial.println("Cannot add more tasks, array is full!");
+    return;
+  }
+
+  // Add the new task to the next empty slot in the arrays
+  taskArray[currentLength] = newTask;
+  streakArray[currentLength] = 0;
+
+  // Increment the current length
+  currentLength++;
+}
+
+void removeTask(int id) {
+    // Check if there are tasks to remove
+    if (currentLength == 0) {
+        Serial.println("No tasks to remove!");
+        return;
+    }
+   
+    // Remove the last task added
+    taskArray[id] = "";
+    streakArray[id] = 0;
+  
+    // Shift all elements after the removed element one index left
+    for (int i = id; i < currentLength - 1; i++) {
+        taskArray[i] = taskArray[i + 1];
+        streakArray[i] = streakArray[i + 1];
+    }
+  
+    // Decrement the current length
+    currentLength--;
+}
 
