@@ -1,6 +1,7 @@
 # StreakGuardian
 
   Проект: Управление на задачи с LCD дисплей и звукови сигнали\
+  Линк: [StreakGuardian](https://www.tinkercad.com/things/0tV2b2Z61Eg-streakguardian?sharecode=tgJFQMRcx6EPmfGByvTDXxup4JUwryxY2E45k7h1VzQ)
   Автори: Даниел Бойчев и Николай Табальов 
 
 ## Съдържание
