@@ -11,9 +11,9 @@
 #define C5 523
 #define E5 659
 
-#define QUARTER_NOTE 400
-#define HALF_NOTE 800
-#define EIGHTH_NOTE 200
+#define quarter 400
+#define half 800
+#define eighth 200
 
 const unsigned long interval = 86400000; // Interval in milliseconds (e.g., 60000 ms = 1 minute)
 
@@ -205,33 +205,33 @@ void playNote(int frequency, int duration) {
 
 void TetrisTheme() {
     // Play Tetris theme melody
-    playNote(E4, QUARTER_NOTE);
-    playNote(B4, QUARTER_NOTE);
-    playNote(C5, HALF_NOTE);
-    playNote(A4, EIGHTH_NOTE);
-    playNote(G4, EIGHTH_NOTE);
-    playNote(F4, HALF_NOTE);
+    playTone(E4, quarter);
+    playTone(B4, quarter);
+    playTone(C5, half);
+    playTone(A4, eighth);
+    playTone(G4, eighth);
+    playTone(F4, half);
 
-    playNote(E4, QUARTER_NOTE);
-    playNote(B4, QUARTER_NOTE);
-    playNote(C5, HALF_NOTE);
-    playNote(A4, EIGHTH_NOTE);
-    playNote(G4, EIGHTH_NOTE);
-    playNote(F4, HALF_NOTE);
+    playTone(E4, quarter);
+    playTone(B4, quarter);
+    playTone(C5, half);
+    playTone(A4, eighth);
+    playTone(G4, eighth);
+    playTone(F4, half);
 
-    playNote(E4, QUARTER_NOTE);
-    playNote(B4, QUARTER_NOTE);
-    playNote(C5, HALF_NOTE);
-    playNote(E5, EIGHTH_NOTE);
-    playNote(C5, EIGHTH_NOTE);
-    playNote(B4, HALF_NOTE);
+    playTone(E4, quarter);
+    playTone(B4, quarter);
+    playTone(C5, half);
+    playTone(659, eighth); // E5 (high E note)
+    playTone(C5, eighth);
+    playTone(B4, half);
 
-    playNote(A4, QUARTER_NOTE);
-    playNote(F4, QUARTER_NOTE);
-    playNote(G4, HALF_NOTE);
-    playNote(E4, EIGHTH_NOTE);
-    playNote(G4, EIGHTH_NOTE);
-    playNote(A4, HALF_NOTE);
+    playTone(A4, quarter);
+    playTone(F4, quarter);
+    playTone(G4, half);
+    playTone(E4, eighth);
+    playTone(G4, eighth);
+    playTone(A4, half);
 
     delay(1000);
 }
