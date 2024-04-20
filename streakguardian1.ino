@@ -15,7 +15,7 @@
 #define half 800
 #define eighth 200
 
-const unsigned long interval = 10000; // 86400000 Interval in milliseconds (e.g., 60000 ms = 1 minute)
+const unsigned long interval = 10000;
 const unsigned long notificationTime = 5000;
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 
@@ -69,7 +69,7 @@ void loop() {
     checkTaskTimers();
 
     // Button 1 (Previous Task Button)
-    if (buttonStateOne == HIGH) { // Button = Pressed
+    if (buttonStateOne == HIGH) {
 
         currentIndex--;
 
@@ -83,7 +83,7 @@ void loop() {
     }
 
     // Button 2 (Next Task Button)
-    if (buttonStateTwo == HIGH) { // Button = Pressed
+    if (buttonStateTwo == HIGH) {
 
         currentIndex++;
 
@@ -97,7 +97,7 @@ void loop() {
     }
 
     // Button 3 (Increase Streak Counter Button)
-    if (buttonStateThree == HIGH) { // Button = Pressed
+    if (buttonStateThree == HIGH) {
         streakArray[currentIndex]++;
         startedStreakTimes[currentIndex] = millis();
     }
@@ -108,15 +108,11 @@ void loop() {
     }
 
     // Button 5 (Remove Task Button)
-    if (buttonStateFive == HIGH) { // Button = Pressed
+    if (buttonStateFive == HIGH) {
         removeTask();
     }
 
-    delay(120); // Delay a little bit to improve simulation performance
-}
-
-int getLength() {
-    return sizeof(streakArray) / sizeof(streakArray[0]);
+    delay(120);
 }
 
 void addTask() {
@@ -125,7 +121,6 @@ void addTask() {
     while (Serial.available() == 0) {
     }
 
-    // Get task name from user
     String newTask = Serial.readString();
     newTask.trim();
     Serial.println(newTask);
@@ -136,16 +131,14 @@ void addTask() {
         return;
     }
 
-    // Add the new task to the next empty slot in the arrays
     taskArray[currentLength] = newTask;
     streakArray[currentLength] = 0;
     startedStreakTimes[currentLength] = millis();
-    // Increment the current length
+
     currentLength++;
 }
 
 void removeTask() {
-    // Display available tasks to remove
     for (int i = 0; i < currentLength; i++) {
         Serial.println(i + 1 + taskArray[i]);
     }
@@ -168,24 +161,16 @@ void removeTask() {
         streakArray[i] = streakArray[i + 1];
     }
 
-    // Decrement the current length
     currentLength--;
 }
 
 // Function to play a note with a specific duration
 void playTone(int frequency, int duration) {
-    tone(13, frequency, duration); // Play tone on pin 8
-    delay(duration);               // Add a small delay for spacing between notes
+    tone(13, frequency, duration);
+    delay(duration);
 }
 
 void TetrisTheme() {
-    // Play Tetris theme melody
-    playTone(E4, quarter);
-    playTone(B4, quarter);
-    playTone(C5, half);
-    playTone(A4, eighth);
-    playTone(G4, eighth);
-    playTone(F4, half);
 
     playTone(E4, quarter);
     playTone(B4, quarter);
@@ -197,7 +182,14 @@ void TetrisTheme() {
     playTone(E4, quarter);
     playTone(B4, quarter);
     playTone(C5, half);
-    playTone(E5, eighth); // E5 (high E note)
+    playTone(A4, eighth);
+    playTone(G4, eighth);
+    playTone(F4, half);
+
+    playTone(E4, quarter);
+    playTone(B4, quarter);
+    playTone(C5, half);
+    playTone(E5, eighth);
     playTone(C5, eighth);
     playTone(B4, half);
 
@@ -212,15 +204,15 @@ void TetrisTheme() {
 }
 
 void checkTaskTimers() {
-    // Get the current time
+
     unsigned long currentMillis = millis();
-    // Serial.println(currentMillis);
+
     for (int i = 0; i < currentLength; i++) {
-        // Serial.println(startedStreakTimes[i]);
-        if (currentMillis - startedStreakTimes[i] >= interval && streakArray[i] != 0) { // Check if timer has ran out
-            streakArray[i] = 0;                                                         // Decrease the streak
-            // Streak not increased in time, trigger EyeOfTheTiger()
+        if (currentMillis - startedStreakTimes[i] >= interval && streakArray[i] != 0) {
+            streakArray[i] = 0;
+
             Serial.println("Timer ran out!!!" + taskArray[i]);
+
         } else if (currentMillis - startedStreakTimes[i] >= interval - notificationTime && streakArray[i] != 0) {
             TetrisTheme();
         }
