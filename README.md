@@ -24,7 +24,7 @@
   4. Звукова платка за възпроизвеждане на мелодии
    
 ## Електрическа схема
- [![Scheme](img)](https://cdn.discordapp.com/attachments/1027919191136813137/1231250849204797460/image.png?ex=663646b5&is=6623d1b5&hm=4f889b2e9b1a6ccf17ce65312d6053cced0da6b7efbd30a11bc0bfea04a129f4&)
+ [![Scheme](image.png)](https://cdn.discordapp.com/attachments/1027919191136813137/1231250849204797460/image.png?ex=663646b5&is=6623d1b5&hm=4f889b2e9b1a6ccf17ce65312d6053cced0da6b7efbd30a11bc0bfea04a129f4&)
 ## Сорс код – описание на функционалността
 
 1.	Функция void loop():
