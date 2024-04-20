@@ -197,7 +197,7 @@ void TetrisTheme() {
     playTone(E4, quarter);
     playTone(B4, quarter);
     playTone(C5, half);
-    playTone(659, eighth); // E5 (high E note)
+    playTone(E5, eighth); // E5 (high E note)
     playTone(C5, eighth);
     playTone(B4, half);
 
