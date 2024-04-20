@@ -19,11 +19,11 @@
 
 ## Блокова схема
  
-  ![alttext](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/%D0%91%D0%BB%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0%20%D1%81%D1%85%D0%B5%D0%BC%D0%B0.png)
-    1. Arduino Uno (микроконтролер)
-    2. LCD дисплей
-    3. Бутони за управление
-    4. Звукова платка за възпроизвеждане на мелодии
+  ![alttext](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/%D0%91%D0%BB%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0%20%D1%81%D1%85%D0%B5%D0%BC%D0%B0.png)\
+    1. Arduino Uno (микроконтролер)\
+    2. LCD дисплей\
+    3. Бутони за управление\
+    4. Звукова платка за възпроизвеждане на мелодии\
    
 ## Електрическа схема
   
