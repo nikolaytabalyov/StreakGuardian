@@ -17,14 +17,14 @@
   премахва задачи. Системата предоставя и уведомления, когато един или повече от сроковете за изпълнение на задачите наближават.
 
 ## Блокова схема
-
+  ![alttext](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/%D0%91%D0%BB%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0%20%D1%81%D1%85%D0%B5%D0%BC%D0%B0.png)
   1. Arduino Uno (микроконтролер)
   2. LCD дисплей
   3. Бутони за управление
   4. Звукова платка за възпроизвеждане на мелодии
    
 ## Електрическа схема
- [![Scheme](image.png)](https://cdn.discordapp.com/attachments/1027919191136813137/1231250849204797460/image.png?ex=663646b5&is=6623d1b5&hm=4f889b2e9b1a6ccf17ce65312d6053cced0da6b7efbd30a11bc0bfea04a129f4&)
+  ![Scheme](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/%D0%95%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%20%D0%A1%D1%85%D0%B5%D0%BC%D0%B0.png)
 ## Сорс код – описание на функционалността
 
 1.	Функция void loop():
