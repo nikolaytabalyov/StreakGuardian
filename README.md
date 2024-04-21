@@ -23,7 +23,7 @@
   
   ![Scheme](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/%D0%95%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%20%D0%A1%D1%85%D0%B5%D0%BC%D0%B0.png)
 
-##  Списъй съставни части
+##  Списък съставни части
 
 ![Components](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/Components.png)\
 
