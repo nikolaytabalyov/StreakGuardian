@@ -18,18 +18,14 @@
   StreakGuardian представлява система за управление на списък със задачи, която използва Arduino Uno като микроконтролер за управление на LCD дисплей, 
   бутони за навигация и звукови сигнали. Потребителят може да добавя и   
   премахва задачи. Системата предоставя и уведомления, когато един или повече от сроковете за изпълнение на задачите наближават.
-
-## Блокова схема
- 
-  ![alttext](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/%D0%91%D0%BB%D0%BE%D0%BA%D0%BE%D0%B2%D0%B0%20%D1%81%D1%85%D0%B5%D0%BC%D0%B0.png)\
-    1. Arduino Uno (микроконтролер)\
-    2. LCD дисплей\
-    3. Бутони за управление\
-    4. Звукова платка за възпроизвеждане на мелодии
    
 ## Електрическа схема
   
   ![Scheme](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/%D0%95%D0%BB%D0%B5%D0%BA%D1%82%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%20%D0%A1%D1%85%D0%B5%D0%BC%D0%B0.png)
+
+##  Списъй съставни части
+
+![Components](https://github.com/nikolaytabalyov/StreakGuardian/blob/main/images/Components.png)\
 
 ## Сорс код – описание на функционалността
 
